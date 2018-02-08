@@ -223,7 +223,7 @@ class OctomapWorld : public WorldBase {
 
   void coordToKey(const Eigen::Vector3d& coord, octomap::OcTreeKey* key) const;
   void keyToCoord(const octomap::OcTreeKey& key, Eigen::Vector3d* coord) const;
-
+  std::shared_ptr<octomap::OcTree> octree_;
  protected:
   // Actual implementation for inserting disparity data.
   virtual void insertProjectedDisparityIntoMapImpl(
@@ -271,8 +271,6 @@ class OctomapWorld : public WorldBase {
   bool checkSinglePoseCollision(const Eigen::Vector3d& robot_position) const;
 
   std_msgs::ColorRGBA percentToColor(double h) const;
-
-  std::shared_ptr<octomap::OcTree> octree_;
 
   OctomapParameters params_;
 
